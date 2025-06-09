@@ -1,0 +1,199 @@
+:root {
+    --background: #181a1b;
+    --surface: #23272a;
+    --accent: #3a3f44;
+    --text: #f1f1f1;
+    --primary: #4e8cff;
+    --shadow: rgba(0,0,0,0.5);
+}
+
+/* Dark background for body */
+body {
+    background: var(--background);
+    color: var(--text);
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Make the menu bar a horizontal flex container */
+#menu-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--surface);
+    padding: 1.2vw 3vw;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* Style the menu button */
+#menu-button {
+    color: var(--text);
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-right: 2vw;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+#menu-button:hover {
+    background: var(--accent);
+}
+
+/* Style the menu content */
+#menu-content {
+    display: flex;
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.4s, opacity 0.4s;
+}
+
+#menu-content ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu-content li {
+    margin-right: 2vw;
+}
+
+#menu-content a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+#menu-content a:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Show menu with animation */
+#menu-content:not(.hidden) {
+    max-width: 50vw;
+    opacity: 1;
+}
+
+/* Hide menu content when .hidden is present */
+.hidden {
+    max-width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: max-width 0.4s, opacity 0.4s;
+}
+
+/* Responsive main content */
+main {
+    padding: 4vw 2vw;
+    background: var(--background);
+    min-height: 80vh;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 4vw;
+    }
+}
+
+/* Main info card */
+.main-info {
+    background: var(--surface);
+    padding: 3vw;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px var(--shadow);
+    font-size: 1.3em;
+}
+
+/* Slideshow grid */
+.slideshow-container {
+    display: grid;
+    gap: 2vw;
+}
+
+/* Slideshow styling */
+.slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--accent);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px var(--shadow);
+    min-height: 200px;
+    max-width: 100%;
+}
+
+.slideshow img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    transition: opacity 0.7s, transform 0.4s, box-shadow 0.4s;
+    opacity: 0;
+    z-index: 1;
+    display: block;
+    border-radius: 18px;
+}
+
+.slideshow img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slideshow img.active:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 32px 8px var(--primary);
+    outline: 2px solid var(--primary);
+}
+
+/* Make text and images scale on small screens */
+@media (max-width: 600px) {
+    .main-info {
+        font-size: 1em;
+        padding: 6vw 3vw;
+    }
+    .slideshow {
+        min-height: 120px;
+    }
+}
+
+.video-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--accent);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px var(--shadow);
+    max-width: 100%;
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
